@@ -31,3 +31,69 @@ body {
   list-style-type: none;
   
 }
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+.board {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.column {
+  width: 30%;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+}
+
+.card {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.card p {
+  margin: 0;
+}
+
+.add-column,
+.add-card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.add-column input,
+.add-card input {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.add-column button,
+.add-card button {
+  padding: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.add-column button:hover,
+.add-card button:hover {
+  background-color: #0056b3;
+}
+
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+.ReactModal__Content {
+  border-radius: 4px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}

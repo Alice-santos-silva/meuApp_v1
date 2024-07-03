@@ -70,7 +70,7 @@ function Servico({ services, setServices }) {
       </Button>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h5" component="div" gutterBottom sx={{ p: 2, mb: 2, backgroundColor: '#f5f5f5' }}>
-          Serviços
+          Serviços adicionados
         </Typography>
         {services.map((service, index) => (
           <Box key={index} sx={{ mb: 2 }}>
