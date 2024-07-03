@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box, Button, TextField, Typography } from '@mui/material';
 
 function Servico({ services, setServices }) {
   const [newService, setNewService] = useState({ name: '', costs: [], quantity: 1 });
@@ -20,58 +21,66 @@ function Servico({ services, setServices }) {
   };
 
   return (
-    <div>
-      <h2>Adicionar Novo Serviço</h2>
-      <div>
-        <label>
-          Nome:
-          <input
-            type="text"
-            name="name"
-            value={newService.name}
-            onChange={handleNewServiceChange}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Quantidade:
-          <input
-            type="number"
-            name="quantity"
-            value={newService.quantity}
-            onChange={handleNewServiceChange}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
+    <Box sx={{ mt: 4 }}>
+      <Typography variant="h5" component="div" gutterBottom>
+        Adicionar Novo Serviço
+      </Typography>
+      <Box sx={{ mb: 2 }}>
+        <TextField
+          label="Nome"
+          name="name"
+          value={newService.name}
+          onChange={handleNewServiceChange}
+          fullWidth
+          sx={{ mb: 2 }}
+        />
+        <TextField
+          label="Quantidade"
+          type="number"
+          name="quantity"
+          value={newService.quantity}
+          onChange={handleNewServiceChange}
+          fullWidth
+          sx={{ mb: 2 }}
+        />
+        <Typography variant="body1" gutterBottom>
           Custos:
-          {newService.costs.map((cost, index) => (
-            <input
-              key={index}
-              type="number"
-              value={cost}
-              onChange={(e) => handleServiceCostChange(index, e.target.value)}
-            />
-          ))}
-          <button onClick={() => setNewService({ ...newService, costs: [...newService.costs, 0] })}>
-            Adicionar Custo
-          </button>
-        </label>
-      </div>
-      <button onClick={handleAddService}>Adicionar Serviço</button>
-      <div>
-        <h2>Serviços</h2>
-        {services.map((service, index) => (
-          <div key={index}>
-            <h4>{service.name}</h4>
-            <p>Quantidade: {service.quantity}</p>
-            <p>Custos: {service.costs.join(', ')}</p>
-          </div>
+        </Typography>
+        {newService.costs.map((cost, index) => (
+          <TextField
+            key={index}
+            type="number"
+            label={`Custo ${index + 1}`}
+            value={cost}
+            onChange={(e) => handleServiceCostChange(index, e.target.value)}
+            fullWidth
+            sx={{ mb: 2 }}
+          />
         ))}
-      </div>
-    </div>
+        <Button
+          variant="outlined"
+          onClick={() => setNewService({ ...newService, costs: [...newService.costs, 0] })}
+          sx={{ mb: 2 }}
+        >
+          Adicionar Custo
+        </Button>
+      </Box>
+      <Button variant="contained" color="primary" onClick={handleAddService}>
+        Adicionar Serviço
+      </Button>
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h5" component="div" gutterBottom sx={{ p: 2, mb: 2, backgroundColor: '#f5f5f5' }}>
+          Serviços
+        </Typography>
+        {services.map((service, index) => (
+          <Box key={index} sx={{ mb: 2 }}>
+            <Typography variant="h6">{service.name}</Typography>
+            <Typography>Quantidade: {service.quantity}</Typography>
+            <Typography>Custos: {service.costs.join(', ')}</Typography>
+          </Box>
+        ))}
+      </Box>
+    </Box>
   );
 }
 

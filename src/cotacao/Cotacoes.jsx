@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import Servico from './Servico';
 import Resultado from './Resultado';
-import ValorMoeda from './ValorMoeda'
+import ValorMoeda from './ValorMoeda';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import '../App.css';
 
 function Cotacoes() {
   const [dollarRate, setDollarRate] = useState(4.8);
@@ -46,22 +54,41 @@ function Cotacoes() {
 
   return (
     <div>
-      <header>
-        <h1>Cotação</h1>
-        <ValorMoeda
-          dollarRate={dollarRate}
-          setDollarRate={setDollarRate}
-          euroRate={euroRate}
-          setEuroRate={setEuroRate}
-          baseValue={baseValue}
-          setBaseValue={setBaseValue}
-          numPeople={numPeople}
-          setNumPeople={setNumPeople}
-        />
-        <button onClick={handleCalculate}>Calcular Cotação</button>
-        <Resultado results={results} />
-        <Servico services={services} setServices={setServices} />
-      </header>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Cotação
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Container>
+        <Box my={4}>
+          <Servico services={services} setServices={setServices} />
+          <Typography variant="h4" component="h1" gutterBottom>
+            Cotação
+          </Typography>
+          <ValorMoeda
+            dollarRate={dollarRate}
+            setDollarRate={setDollarRate}
+            euroRate={euroRate}
+            setEuroRate={setEuroRate}
+            baseValue={baseValue}
+            setBaseValue={setBaseValue}
+            numPeople={numPeople}
+            setNumPeople={setNumPeople}
+          />
+          <Grid container spacing={2} mt={2}>
+            <Grid item xs={12}>
+              <Button variant="contained" color="primary" onClick={handleCalculate}>
+                Calcular Cotação
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <Resultado results={results} />
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
     </div>
   );
 }
