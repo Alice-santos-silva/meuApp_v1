@@ -1,0 +1,28 @@
+*{
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:100;
+
+}
+
+body{
+  box-sizing: border-box;
+}
+
+.container-nav{
+  background-color: pink;
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.container-nav ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
