@@ -2,7 +2,6 @@ import React from 'react';
 import Card from './Card';
 
 const Column = ({ column, cards, onCardDrop, onRemoveColumn, onAddCard, onCardClick }) => {
-
   const handleDragOver = (e) => {
     e.preventDefault();
   };
