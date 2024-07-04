@@ -68,26 +68,28 @@ const Board = () => {
   };
 
   return (
-    <div className="board">
-      {columns.map(column => (
-        <Column
-          key={column.id}
-          column={column}
-          cards={cards.filter(card => card.columnId === column.id)}
-          onCardDrop={handleCardDrop}
-          onRemoveColumn={handleRemoveColumn}
-          onAddCard={() => handleOpenModal(column.id)}
-          onCardClick={handleCardClick}
-        />
-      ))}
-      <div className="add-column">
-        <input 
-          type="text" 
-          value={newColumnTitle} 
-          onChange={e => setNewColumnTitle(e.target.value)} 
-          placeholder="Nova Coluna"
-        />
-        <button onClick={handleAddColumn}>Adicionar Coluna</button>
+    <div className="board-wrapper">
+      <div className="board">
+        {columns.map(column => (
+          <Column
+            key={column.id}
+            column={column}
+            cards={cards.filter(card => card.columnId === column.id)}
+            onCardDrop={handleCardDrop}
+            onRemoveColumn={handleRemoveColumn}
+            onAddCard={() => handleOpenModal(column.id)}
+            onCardClick={handleCardClick}
+          />
+        ))}
+        <div className="add-column">
+          <input 
+            type="text" 
+            value={newColumnTitle} 
+            onChange={e => setNewColumnTitle(e.target.value)} 
+            placeholder="Nova Coluna"
+          />
+          <button onClick={handleAddColumn}>Adicionar Coluna</button>
+        </div>
       </div>
       <Modal isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
         <h2>Novo Cartão</h2>

@@ -33,17 +33,28 @@ body {
 }
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
+.board-wrapper {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 20px;
+  white-space: nowrap;
+  width: 100%;
+}
+
 .board {
   display: flex;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: flex-start;
 }
 
 .column {
-  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+  width: 300px; /* Ajuste a largura conforme necessário */
   padding: 10px;
   background-color: #f4f4f4;
   border-radius: 5px;
+  margin-right: 20px; /* Espaçamento entre colunas */
 }
 
 .card {
