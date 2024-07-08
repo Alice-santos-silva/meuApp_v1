@@ -12,8 +12,8 @@ import Box from '@mui/material/Box';
 import '../App.css';
 
 function Cotacoes() {
-  const [dollarRate, setDollarRate] = useState(4.8);
-  const [services, setServices] = useState([]);
+  const [dollarRate, setDollarRate] = useState(4.8);// Taxa de câmbio do dólar
+  const [services, setServices] = useState([]); // Lista de serviços
   const [margin, setMargin] = useState(0.15);
   const [tax, setTax] = useState(0.05);
   const [euroRate, setEuroRate] = useState(1.03);
