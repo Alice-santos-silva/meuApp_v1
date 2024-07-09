@@ -1,4 +1,3 @@
-// src/KanbanColumn.js
 import React from 'react';
 import { useDrop } from 'react-dnd';
 import KanbanCard from './KanbanCard';
@@ -16,9 +15,12 @@ const KanbanColumn = ({ status, cards, onDropCard }) => {
     <div
       ref={drop}
       style={{
-        flex: 1,
+        display: 'inline-block', // Adicionando inline-block para manter colunas inline
+        verticalAlign: 'top', // Alinhamento vertical das colunas
+        minWidth: '300px',
+        marginRight: '16px',
+        flexShrink: 0, // Impede que as colunas se comprimam
         padding: '16px',
-        margin: '8px',
         backgroundColor: isOver ? '#e0ffe0' : '#f0f0f0',
         minHeight: '400px',
         border: '1px solid gray',

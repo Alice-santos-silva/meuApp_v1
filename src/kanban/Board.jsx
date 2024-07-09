@@ -1,12 +1,10 @@
-import "../App.css";
-// src/App.js
 import React, { useState } from 'react';
 import KanbanColumn from './KanbanColumn';
 
 const initialCards = [
-  { id: 1, text: 'Task 1', status: 'To Do' },
-  { id: 2, text: 'Task 2', status: 'To Do' },
-  { id: 3, text: 'Task 3', status: 'In Progress' },
+  { id: 1, text: 'Task 1', status: 'Novo Orçamento' },
+  { id: 2, text: 'Task 2', status: 'Synoptique e Condições' },
+  { id: 3, text: 'Task 3', status: 'Montagem do Roteiro' },
   { id: 4, text: 'Task 4', status: 'Done' },
 ];
 
@@ -21,10 +19,10 @@ const Board = () => {
     );
   };
 
-  const columns = ['To Do', 'In Progress', 'Done'];
+  const columns = ['Novo Orçamento', 'Synoptique e Condições', 'Montagem do Roteiro', 'Alinhamento de Expectativas', 'Disponibilidade e Tarifas', 'Preparação da Cotação', 'Coleta de Informações para a Proposta', 'Preparação da Apresentação', 'Proposta Enviada', 'Orçamento Confirmado', 'Orçamento Suspenso'];
 
   return (
-    <div style={{ display: 'flex', padding: '16px' }}>
+    <div style={{ display: 'flex', overflowX: 'auto', whiteSpace: 'nowrap', padding: '16px' }}>
       {columns.map((column) => (
         <KanbanColumn
           key={column}
