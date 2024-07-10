@@ -4,7 +4,7 @@
   font-weight: 400;
   font-style: normal;
   font-variation-settings:100;
-
+ 
 }
 
 body {
@@ -41,13 +41,7 @@ body {
   width: 100vw;
 }
 
-/*.board {
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  width: 100vw;
-  
-}*/
+
 
 .column {
   display: inline-block;

@@ -19,7 +19,9 @@ const KanbanCard = ({ id, text }) => {
         margin: '4px',
         backgroundColor: 'white',
         border: '1px solid gray',
-        cursor: 'move',
+        cursor: 'pointer',
+        borderRadius:'5px',
+        textAlign:'center'
       }}
     >
       {text}

@@ -1,3 +1,10 @@
+/**
+ * add recurso : ampliar card (modal)
+ * add recurso editar campos do card
+ * add recurso : transformar card em docx, e baixar doc
+ * como persistir esses dados?
+ */
+
 import React from 'react';
 import { useDrop } from 'react-dnd';
 import KanbanCard from './KanbanCard';
@@ -24,6 +31,10 @@ const KanbanColumn = ({ status, cards, onDropCard }) => {
         backgroundColor: isOver ? '#e0ffe0' : '#f0f0f0',
         minHeight: '400px',
         border: '1px solid gray',
+        borderRadius:'10px',
+        textAlign:'center',
+        overflowY:'auto',
+        whiteSpace:'nowrap'
       }}
     >
       <h2>{status}</h2>
@@ -35,3 +46,6 @@ const KanbanColumn = ({ status, cards, onDropCard }) => {
 };
 
 export default KanbanColumn;
+
+
+
