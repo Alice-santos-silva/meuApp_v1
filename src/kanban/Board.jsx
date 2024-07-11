@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import KanbanColumn from './KanbanColumn';
 import KanbanCard from './KanbanCard';
 
+// Cartões iniciais
 const initialCards = [
   { id: 1, text: 'Task 1', status: 'Novo Orçamento' },
   { id: 2, text: 'Task 2', status: 'Synoptique e Condições' },
@@ -10,20 +11,21 @@ const initialCards = [
 ];
 
 const Board = () => {
+  // Estado dos cartões com persistência no localStorage
   const [cards, setCards] = useState(() => {
-    // Carregar dados do localStorage ou usar initialCards
     const savedCards = localStorage.getItem('kanbanCards');
     return savedCards ? JSON.parse(savedCards) : initialCards;
   });
 
-  const [newCardText, setNewCardText] = useState('');
-  const [newCardStatus, setNewCardStatus] = useState('Novo Orçamento');
+  const [newCardText, setNewCardText] = useState(''); // Estado para o texto do novo cartão
+  const [newCardStatus, setNewCardStatus] = useState('Novo Orçamento'); // Estado para o status do novo cartão
 
   // Salvar dados no localStorage sempre que cards mudar
   useEffect(() => {
     localStorage.setItem('kanbanCards', JSON.stringify(cards));
   }, [cards]);
 
+  // Função para atualizar o status de um cartão
   const handleDropCard = (id, newStatus) => {
     setCards((prevCards) =>
       prevCards.map((card) =>
@@ -32,18 +34,20 @@ const Board = () => {
     );
   };
 
+  // Função para adicionar um novo cartão
   const handleAddCard = () => {
     const newCard = {
-      id: cards.length + 1,
-      text: newCardText,
-      status: newCardStatus,
+      id: cards.length + 1, // Cria um ID único para o novo cartão
+      text: newCardText, // Texto do novo cartão
+      status: newCardStatus, // Status inicial do novo cartão
     };
-    setCards((prevCards) => [...prevCards, newCard]);
+    setCards((prevCards) => [...prevCards, newCard]); // Adiciona o novo cartão ao estado
     setNewCardText(''); // Limpa o campo de texto do novo cartão
   };
 
+  // Função para deletar um cartão
   const handleDeleteCard = (id) => {
-    setCards((prevCards) => prevCards.filter((card) => card.id !== id));
+    setCards((prevCards) => prevCards.filter((card) => card.id !== id)); // Remove o cartão com o ID correspondente
   };
 
   const columns = [
@@ -62,7 +66,7 @@ const Board = () => {
 
   return (
     <div>
-      <div style={{backgroundColor:'#489cef', padding:'10px', display:'flex', justifyContent:'center', alignItems:'center', height:'80px'}}>
+      <div className='newCard'>
         <input
           type="text"
           value={newCardText}
@@ -84,7 +88,7 @@ const Board = () => {
             key={column}
             status={column}
             cards={cards.filter((card) => card.status === column)}
-            onDropCard={handleDropCard}
+            onDropCard={handleDropCard} 
             onDeleteCard={handleDeleteCard} // Passa a função de deletar para a coluna
           />
         ))}

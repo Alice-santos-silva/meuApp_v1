@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
-
+import DeleteIcon from '@mui/icons-material/Delete';
 const KanbanCard = ({ id, text, onDelete }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'CARD',
@@ -23,6 +23,7 @@ const KanbanCard = ({ id, text, onDelete }) => {
         borderRadius: '5px',
         textAlign: 'center',
         position: 'relative', // Necessário para posicionar o botão de exclusão
+        minHeight: '50px'
       }}
     >
       {text}
@@ -32,16 +33,17 @@ const KanbanCard = ({ id, text, onDelete }) => {
           position: 'absolute',
           top: '5px',
           right: '5px',
-          backgroundColor: 'red',
+          backgroundColor: '#1976D2',
           color: 'white',
           border: 'none',
-          borderRadius: '50%',
-          width: '20px',
-          height: '20px',
+          
+          minWidth: '20px',
+          minHeight: '20px',
           cursor: 'pointer',
+          
         }}
       >
-        X
+       <DeleteIcon/>
       </button>
     </div>
   );
