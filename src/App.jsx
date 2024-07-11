@@ -7,7 +7,8 @@ import './App.css'
 
 export default function App(){
   return(
-    <Router>
+    <div className="container-principal">
+      <Router>
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<Home/>}/>
@@ -17,5 +18,7 @@ export default function App(){
         </Route>
       </Routes>
     </Router>
+    </div>
+    
   )
 }

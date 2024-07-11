@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import KanbanColumn from './KanbanColumn';
+import KanbanCard from './KanbanCard';
 
 const initialCards = [
   { id: 1, text: 'Task 1', status: 'Novo Orçamento' },
@@ -9,9 +10,19 @@ const initialCards = [
 ];
 
 const Board = () => {
-  const [cards, setCards] = useState(initialCards);
+  const [cards, setCards] = useState(() => {
+    // Carregar dados do localStorage ou usar initialCards
+    const savedCards = localStorage.getItem('kanbanCards');
+    return savedCards ? JSON.parse(savedCards) : initialCards;
+  });
+
   const [newCardText, setNewCardText] = useState('');
   const [newCardStatus, setNewCardStatus] = useState('Novo Orçamento');
+
+  // Salvar dados no localStorage sempre que cards mudar
+  useEffect(() => {
+    localStorage.setItem('kanbanCards', JSON.stringify(cards));
+  }, [cards]);
 
   const handleDropCard = (id, newStatus) => {
     setCards((prevCards) =>
@@ -29,6 +40,10 @@ const Board = () => {
     };
     setCards((prevCards) => [...prevCards, newCard]);
     setNewCardText(''); // Limpa o campo de texto do novo cartão
+  };
+
+  const handleDeleteCard = (id) => {
+    setCards((prevCards) => prevCards.filter((card) => card.id !== id));
   };
 
   const columns = [
@@ -70,6 +85,7 @@ const Board = () => {
             status={column}
             cards={cards.filter((card) => card.status === column)}
             onDropCard={handleDropCard}
+            onDeleteCard={handleDeleteCard} // Passa a função de deletar para a coluna
           />
         ))}
       </div>
