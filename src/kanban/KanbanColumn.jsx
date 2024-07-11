@@ -22,12 +22,13 @@ const KanbanColumn = ({ status, cards, onDropCard, onDeleteCard }) => {
         flexShrink: 0,
         padding: '16px',
         backgroundColor: isOver ? '#e0ffe0' : '#f0f0f0',
-        minHeight: '400px',
+        height: '400px',
         border: '1px solid gray',
         borderRadius: '10px',
         textAlign: 'center',
         overflowY: 'auto',
         whiteSpace: 'nowrap',
+
       }}
     >
       <h2>{status}</h2>
