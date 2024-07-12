@@ -37,13 +37,13 @@ const KanbanCard = ({ id, text, onDelete }) => {
           color: 'white',
           border: 'none',
           
-          minWidth: '20px',
-          minHeight: '20px',
+          minWidth: '10px',
+          minHeight: '10px',
           cursor: 'pointer',
           
         }}
       >
-       <DeleteIcon/>
+       <DeleteIcon fontSize="small"/>
       </button>
     </div>
   );

@@ -94,3 +94,47 @@ function Cotacoes() {
 }
 
 export default Cotacoes;
+
+/**
+ * 'Novo Orçamento', 'Synoptique e Condições', 'Montagem do Roteiro', 'Alinhamento de Expectativas', 'Disponibilidade e Tarifas', 'Preparação da Cotação', 'Coleta de Informações para a Proposta', 'Preparação da Apresentação', 'Proposta Enviada', 'Orçamento Confirmado', 'Orçamento Suspenso'
+
+------------------------------------------------------------------------------------------
+
+tarifário 
+cadastrar fornecedores :
+
+
+em formato tabular : cotações com lista suspensa
+
+ tabela de cotação (grupo-fit) MICE
+
+CADASTRO DE FORNECEDORES -> 
+PEGAR NO TARIFARIO  - EXTRAIR INFOS/ VALORES
+
+FAZ UMA LISTA DE SERVIÇOS DE UM FORNECEDOR 
+
+TABELA INCENTIVO :
+
+SELECIONAR FORN LISTA SUSPENSA => SERVIÇOS QUE POSSUI
+
+=> SERVIÇO X : RETORNA 2 VALORES: OU POR PESSOA OU BUCK
+ESCOLHE O SERVICO - NOME FORN- VALOR PRINC (OPCIONAIS)
+
+
+
+CRIAR ADD NOVO SERVIÇO  EM FORNECEDOR 
+
+TARIFARIO: nome hotel - categ quarto - tarifa - taxa iss(variavel)
+
+transportadora: service(transfer) - valor - tipo de veiculo 
+
+rest: menu - buffe(rodizio) - valor por pessoa - opcionais(bebidas) - 
+
+
+guias: tranfer
+
+tarifários
+
+tudo o que tem valor 
+
+criar   */

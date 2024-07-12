@@ -59,7 +59,7 @@ const Board = () => {
     'Preparação da Cotação', 
     'Coleta de Informações para a Proposta', 
     'Preparação da Apresentação', 
-    'Proposta Enviada', 
+    'Proposta Enviada',    
     'Orçamento Confirmado', 
     'Orçamento Suspenso'
   ];

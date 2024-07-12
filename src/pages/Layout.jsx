@@ -61,7 +61,7 @@ export default function Layout() {
                             Cotação
                         </MenuItem>
                         <MenuItem onClick={handleClose} component={Link} to="/kanban">
-                            Kanban Orçamentos
+                            Acompanhamento de Orçamentos
                         </MenuItem>
                     </Menu>
                 </Toolbar>
