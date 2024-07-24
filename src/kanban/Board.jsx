@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import KanbanColumn from './KanbanColumn';
-import KanbanCard from './KanbanCard';
+import '../App.css'; // Importando o arquivo CSS
 
-// Cartões iniciais
 const initialCards = [
   { id: 1, text: 'Task 1', status: 'Novo Orçamento' },
   { id: 2, text: 'Task 2', status: 'Synoptique e Condições' },
@@ -11,21 +10,18 @@ const initialCards = [
 ];
 
 const Board = () => {
-  // Estado dos cartões com persistência no localStorage
   const [cards, setCards] = useState(() => {
     const savedCards = localStorage.getItem('kanbanCards');
     return savedCards ? JSON.parse(savedCards) : initialCards;
   });
 
-  const [newCardText, setNewCardText] = useState(''); // Estado para o texto do novo cartão
-  const [newCardStatus, setNewCardStatus] = useState('Novo Orçamento'); // Estado para o status do novo cartão
+  const [newCardText, setNewCardText] = useState('');
+  const [newCardStatus, setNewCardStatus] = useState('Novo Orçamento');
 
-  // Salvar dados no localStorage sempre que cards mudar
   useEffect(() => {
     localStorage.setItem('kanbanCards', JSON.stringify(cards));
   }, [cards]);
 
-  // Função para atualizar o status de um cartão
   const handleDropCard = (id, newStatus) => {
     setCards((prevCards) =>
       prevCards.map((card) =>
@@ -34,39 +30,37 @@ const Board = () => {
     );
   };
 
-  // Função para adicionar um novo cartão
   const handleAddCard = () => {
     const newCard = {
-      id: cards.length + 1, // Cria um ID único para o novo cartão
-      text: newCardText, // Texto do novo cartão
-      status: newCardStatus, // Status inicial do novo cartão
+      id: cards.length + 1,
+      text: newCardText,
+      status: newCardStatus,
     };
-    setCards((prevCards) => [...prevCards, newCard]); // Adiciona o novo cartão ao estado
-    setNewCardText(''); // Limpa o campo de texto do novo cartão
+    setCards((prevCards) => [...prevCards, newCard]);
+    setNewCardText('');
   };
 
-  // Função para deletar um cartão
   const handleDeleteCard = (id) => {
-    setCards((prevCards) => prevCards.filter((card) => card.id !== id)); // Remove o cartão com o ID correspondente
+    setCards((prevCards) => prevCards.filter((card) => card.id !== id));
   };
 
   const columns = [
-    'Novo Orçamento', 
-    'Synoptique e Condições', 
-    'Montagem do Roteiro', 
-    'Alinhamento de Expectativas', 
-    'Disponibilidade e Tarifas', 
-    'Preparação da Cotação', 
-    'Coleta de Informações para a Proposta', 
-    'Preparação da Apresentação', 
-    'Proposta Enviada',    
-    'Orçamento Confirmado', 
+    'Novo Orçamento',
+    'Synoptique e Condições',
+    'Montagem do Roteiro',
+    'Alinhamento de Expectativas',
+    'Disponibilidade e Tarifas',
+    'Preparação da Cotação',
+    'Coleta de Informações para a Proposta',
+    'Preparação da Apresentação',
+    'Proposta Enviada',
+    'Orçamento Confirmado',
     'Orçamento Suspenso'
   ];
 
   return (
     <div>
-      <div className='newCard'>
+      <div className="newCard">
         <input
           type="text"
           value={newCardText}
@@ -82,14 +76,14 @@ const Board = () => {
         </select>
         <button onClick={handleAddCard}>Adicionar Cartão</button>
       </div>
-      <div style={{ display: 'flex', overflowX: 'auto', whiteSpace: 'nowrap', padding: '16px' }}>
+      <div className="kanban-board">
         {columns.map((column) => (
           <KanbanColumn
             key={column}
             status={column}
             cards={cards.filter((card) => card.status === column)}
-            onDropCard={handleDropCard} 
-            onDeleteCard={handleDeleteCard} // Passa a função de deletar para a coluna
+            onDropCard={handleDropCard}
+            onDeleteCard={handleDeleteCard}
           />
         ))}
       </div>

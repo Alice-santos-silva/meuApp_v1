@@ -1,40 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import KanbanCard from './KanbanCard';
+import CompModal from '../utils/compModal';
+import '../App.css'; // Importando o arquivo CSS
 
 const KanbanColumn = ({ status, cards, onDropCard, onDeleteCard }) => {
   const [{ isOver }, drop] = useDrop(() => ({
     accept: 'CARD',
-    drop: (item) => onDropCard(item.id, status),
+    drop: (item) => onDropCard(item.id, status), // Chamando a função ao soltar o card
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   }));
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
+
+  const openModal = (card) => {
+    setActiveCard(card);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setActiveCard(null);
+  };
+
   return (
     <div
       ref={drop}
-      style={{
-        display: 'inline-block',
-        verticalAlign: 'top',
-        minWidth: '300px',
-        marginRight: '16px',
-        flexShrink: 0,
-        padding: '16px',
-        backgroundColor: isOver ? '#e0ffe0' : '#f0f0f0',
-        height: '400px',
-        border: '1px solid gray',
-        borderRadius: '10px',
-        textAlign: 'center',
-        overflowY: 'auto',
-        whiteSpace: 'nowrap',
-
-      }}
+      className={`kanban-column ${isOver ? 'kanban-column-over' : ''}`}
     >
       <h2>{status}</h2>
       {cards.map((card) => (
-        <KanbanCard key={card.id} id={card.id} text={card.text} onDelete={onDeleteCard} />
+        <KanbanCard
+          key={card.id}
+          id={card.id}
+          text={card.text}
+          onDelete={onDeleteCard}
+          openModal={openModal} // Passando a função de abrir o modal para o card
+        />
       ))}
+      {activeCard && (
+        <CompModal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          card={activeCard}
+        />
+      )}
     </div>
   );
 };

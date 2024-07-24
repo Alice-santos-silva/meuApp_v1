@@ -1,7 +1,10 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
 import DeleteIcon from '@mui/icons-material/Delete';
-const KanbanCard = ({ id, text, onDelete }) => {
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import '../App.css'; // Importando o arquivo CSS
+
+const KanbanCard = ({ id, text, onDelete, openModal }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'CARD',
     item: { id },
@@ -13,37 +16,30 @@ const KanbanCard = ({ id, text, onDelete }) => {
   return (
     <div
       ref={drag}
+      className="kanban-card"
       style={{
         opacity: isDragging ? 0.5 : 1,
-        padding: '8px',
-        margin: '4px',
-        backgroundColor: 'white',
-        border: '1px solid gray',
-        cursor: 'pointer',
-        borderRadius: '5px',
-        textAlign: 'center',
-        position: 'relative', // Necessário para posicionar o botão de exclusão
-        minHeight: '50px'
       }}
+      onClick={() => openModal({ id, text })} // Chamando a função quando o card é clicado
     >
       {text}
       <button
-        onClick={() => onDelete(id)}
-        style={{
-          position: 'absolute',
-          top: '5px',
-          right: '5px',
-          backgroundColor: '#1976D2',
-          color: 'white',
-          border: 'none',
-          
-          minWidth: '10px',
-          minHeight: '10px',
-          cursor: 'pointer',
-          
+        onClick={(e) => {
+          e.stopPropagation(); // Prevenir que o clique no botão delete abra o modal
+          onDelete(id);
         }}
+        className="delete-button"
       >
-       <DeleteIcon fontSize="small"/>
+        <DeleteIcon fontSize="small"/>
+      </button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation(); // Prevenir que o clique no botão delete abra o modal
+          openModal({ id, text });
+        }}
+        className="open-modal-button"
+      >
+        <FullscreenIcon fontSize="small"/>
       </button>
     </div>
   );

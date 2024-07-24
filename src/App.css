@@ -163,3 +163,76 @@ body {
   white-space: nowrap;
   padding: 16px;
 }
+
+
+.Modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: 1fr; /* Uma coluna */
+  grid-template-rows: auto repeat(3, auto) auto auto; /* Linhas automáticas para header, inputs, outputs e botões */
+  grid-template-areas: 
+    "header"
+    "input1"
+    "input2"
+    "input3"
+    "input4"
+    "input5"
+    "input6"
+    "input7"
+    "input8"
+    "input9"
+    "update";
+  gap: 10px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.header-row {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Header ocupa a maior parte, ícone à direita */
+  grid-template-areas: "header icon";
+  align-items: center;
+}
+
+#header {
+  grid-area: header;
+}
+
+.icon {
+  grid-area: icon;
+}
+
+.input {
+  grid-area: input1; /* A cada input recebe uma área única */
+  margin-left: 10px;
+}
+
+.output {
+  grid-area: output1; /* Saída correspondente ao input */
+  background-color:#ccdcf5;
+  text-align: center;
+  padding: 5px;
+}
+
+.update-button {
+  grid-area: update;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+
