@@ -22,7 +22,7 @@ const SaveAsExcelButton = () => {
 
 
   
-  return <button onClick={saveAsExcel}>Salvar como Planilha</button>;
+  return <button onClick={saveAsExcel} className="excel-button">Salvar como Planilha</button>;
 };
 
 export default SaveAsExcelButton;

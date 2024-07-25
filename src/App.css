@@ -217,13 +217,19 @@ body {
 
 .output {
   grid-area: output1; /* Saída correspondente ao input */
-  background-color:#ccdcf5;
+  border-bottom: 1px solid #1976D2;
+  border-left: 1px solid #1976D2;
   text-align: center;
   padding: 5px;
 }
 
 .update-button {
   grid-area: update;
+  cursor: pointer;
+}
+
+.excel-button{
+  cursor: pointer;
 }
 
 .Overlay {
@@ -237,5 +243,7 @@ body {
 
 .open-modal-button{
   cursor: pointer;
+  border: none;
+  background-color: #FFFFFF;
 }
 

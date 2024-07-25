@@ -13,6 +13,14 @@ const KanbanCard = ({ id, text, onDelete, openModal }) => {
     }),
   }));
 
+  const handleDelete = (e) => {
+    e.stopPropagation(); // Prevenir que o clique no botão delete abra o modal
+    const confirmDelete = window.confirm("Você tem certeza que deseja deletar este card?");
+    if (confirmDelete) {
+      onDelete(id);
+    }
+  };
+
   return (
     <div
       ref={drag}
@@ -22,12 +30,9 @@ const KanbanCard = ({ id, text, onDelete, openModal }) => {
       }}
       onClick={() => openModal({ id, text })} // Chamando a função quando o card é clicado
     >
-      {text}
+      
       <button
-        onClick={(e) => {
-          e.stopPropagation(); // Prevenir que o clique no botão delete abra o modal
-          onDelete(id);
-        }}
+        onClick={handleDelete}
         className="delete-button"
       >
         <DeleteIcon fontSize="small"/>
@@ -39,7 +44,7 @@ const KanbanCard = ({ id, text, onDelete, openModal }) => {
         }}
         className="open-modal-button"
       >
-        <FullscreenIcon fontSize="small"/>
+        {text}
       </button>
     </div>
   );

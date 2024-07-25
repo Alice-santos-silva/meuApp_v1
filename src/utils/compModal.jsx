@@ -23,28 +23,23 @@ const CompModal = ({ isOpen, onRequestClose, card }) => {
 
   useEffect(() => {
     if (card) {
-      const newFields = fields.map((field, index) => ({
-        ...field,
-        input: card.text // Preencher com informações do cartão
-      }));
-      setFields(newFields);
+      const savedFields = localStorage.getItem(`fields-${card.id}`);
+      if (savedFields) {
+        setFields(JSON.parse(savedFields));
+      } else {
+        setFields(fields.map(field => ({
+          ...field,
+          input: card.text
+        })));
+      }
     }
   }, [card]);
-
-
-
-  useEffect(() => {
-    const storedFields = JSON.parse(localStorage.getItem("fields"));
-    if (storedFields) {
-      setFields(storedFields); /**persistencia dos dados do modal */
-    }
-  }, []);
 
   const handleInputChange = (index, event) => {
     const newFields = [...fields];
     newFields[index].input = event.target.value;
     setFields(newFields);
-    localStorage.setItem("fields", JSON.stringify(newFields));
+    localStorage.setItem(`fields-${card.id}`, JSON.stringify(newFields));
   };
 
   const updateOutputs = () => {
@@ -53,7 +48,8 @@ const CompModal = ({ isOpen, onRequestClose, card }) => {
       output: field.input
     }));
     setFields(newFields);
-    localStorage.setItem("fields", JSON.stringify(newFields));
+    localStorage.setItem(`fields-${card.id}`, JSON.stringify(newFields));
+    alert('Alterações salvas!')
   };
 
   return (
