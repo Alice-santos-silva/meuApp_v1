@@ -10,7 +10,7 @@ export const FieldsContext = createContext();
 
 const CompModal = ({ isOpen, onRequestClose, card }) => {
   const [fields, setFields] = useState([
-    { label: "Nome da Oportunidade:", input: card ? card.text : "", output: "" },
+    { label: "Nome da Oportunidade:", input: "", output: "" },
     { label: "Número do file:", input: "", output: "" },
     { label: "Nome do grupo:", input: "", output: "" },
     { label: "Agência:", input: "", output: "" },
@@ -23,7 +23,7 @@ const CompModal = ({ isOpen, onRequestClose, card }) => {
 
   useEffect(() => {
     if (card) {
-      const newFields = fields.map(field => ({
+      const newFields = fields.map((field, index) => ({
         ...field,
         input: card.text // Preencher com informações do cartão
       }));
@@ -31,10 +31,20 @@ const CompModal = ({ isOpen, onRequestClose, card }) => {
     }
   }, [card]);
 
+
+
+  useEffect(() => {
+    const storedFields = JSON.parse(localStorage.getItem("fields"));
+    if (storedFields) {
+      setFields(storedFields); /**persistencia dos dados do modal */
+    }
+  }, []);
+
   const handleInputChange = (index, event) => {
     const newFields = [...fields];
     newFields[index].input = event.target.value;
     setFields(newFields);
+    localStorage.setItem("fields", JSON.stringify(newFields));
   };
 
   const updateOutputs = () => {
@@ -43,6 +53,7 @@ const CompModal = ({ isOpen, onRequestClose, card }) => {
       output: field.input
     }));
     setFields(newFields);
+    localStorage.setItem("fields", JSON.stringify(newFields));
   };
 
   return (

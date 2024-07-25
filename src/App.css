@@ -207,6 +207,7 @@ body {
 
 .icon {
   grid-area: icon;
+  cursor: pointer;
 }
 
 .input {
@@ -234,5 +235,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 
-
+.open-modal-button{
+  cursor: pointer;
+}
 
