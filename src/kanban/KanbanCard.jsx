@@ -21,6 +21,7 @@ const KanbanCard = ({ id, text, onDelete, openModal }) => {
     }
   };
 
+
   return (
     <div
       ref={drag}
@@ -51,3 +52,6 @@ const KanbanCard = ({ id, text, onDelete, openModal }) => {
 };
 
 export default KanbanCard;
+
+
+

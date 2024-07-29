@@ -33,6 +33,7 @@ const Board = () => {
     );
   };
 
+ 
 
   const handleAddCard = () => {
     const newCard = {
@@ -124,3 +125,4 @@ const Board = () => {
 };
 
 export default Board;
+

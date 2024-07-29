@@ -1,8 +1,9 @@
 import React, { useState, useEffect, createContext } from "react";
 import ReactModal from "react-modal";
+import { Button, TextField, Typography, IconButton } from '@mui/material';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
-import '../App.css';
 import SaveAsExcelButton from './SaveAsExcelButton';
+import '../App.css';
 
 ReactModal.setAppElement('#root');
 
@@ -54,36 +55,39 @@ const CompModal = ({ isOpen, onRequestClose, card }) => {
 
   return (
     <FieldsContext.Provider value={{ fields }}>
-      <div>
-        <ReactModal
-          isOpen={isOpen}
-          onRequestClose={onRequestClose}
-          contentLabel="Example Modal"
-          className="Modal"
-          overlayClassName="Overlay"
-        >
-          <div className="header-row">
-            <h2 id="header">Título do Modal</h2>
-            <button onClick={onRequestClose} className="icon"><FullscreenExitIcon /></button>
+      <ReactModal
+        isOpen={isOpen}
+        onRequestClose={onRequestClose}
+        contentLabel="Example Modal"
+        className="Modal"
+        overlayClassName="Overlay"
+      >
+        <div className="header-row">
+          <Typography variant="h6">Detalhes da Oportunidade</Typography>
+          <IconButton onClick={onRequestClose} className="icon">
+            <FullscreenExitIcon />
+          </IconButton>
+        </div>
+
+        {fields.map((field, index) => (
+          <div key={index}>
+            <TextField
+              label={field.label}
+              variant="outlined"
+              fullWidth
+              value={field.input}
+              onChange={(e) => handleInputChange(index, e)}
+              margin="normal"
+            />
+            <Typography variant="body2" className="output">{field.output}</Typography>
           </div>
+        ))}
 
-          {fields.map((field, index) => (
-            <div key={index}>
-              <label>{field.label}</label>
-              <input
-                type="text"
-                className="input"
-                value={field.input}
-                onChange={(e) => handleInputChange(index, e)}
-              />
-              <p className="output">{field.output}</p>
-            </div>
-          ))}
-
-          <button onClick={updateOutputs} className="update-button">Salvar Alterações</button>
-          <SaveAsExcelButton />
-        </ReactModal>
-      </div>
+        <Button onClick={updateOutputs} variant="contained" color="primary" className="update-button">
+          Salvar Alterações
+        </Button>
+        <SaveAsExcelButton />
+      </ReactModal>
     </FieldsContext.Provider>
   );
 };

@@ -1,9 +1,9 @@
-*{
+* {
   font-family: "Noto Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:100;
+  font-variation-settings: 100;
 }
 
 body {
@@ -11,12 +11,12 @@ body {
   margin: 0px;
 }
 
-.container-principal{
+.container-principal {
   height: 100vh;
 }
 
-.container-nav{
-  background-color:#489bef9a;
+.container-nav {
+  background-color: #489bef9a;
   height: 100%;
   width: 100%;
   display: flex;
@@ -24,16 +24,16 @@ body {
   justify-content: space-around;
 }
 
-.container-nav ul{
+.container-nav ul {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.container-nav ul li{
+.container-nav ul li {
   list-style-type: none;
 }
-/*--------------------------------------------------------------------------------------------------------------------------*/
+
 .board-wrapper {
   display: flex;
   justify-content: center;
@@ -104,7 +104,9 @@ body {
   height: 80px;
 }
 
-.newCard input, select, button {
+.newCard input,
+select,
+button {
   padding: 10px;
   margin: 7px;
   border-radius: 4px;
@@ -112,7 +114,6 @@ body {
   border: 2px solid #918888;
 }
 
-/* Novos estilos adicionados */
 .kanban-card {
   padding: 8px;
   margin: 4px;
@@ -164,7 +165,6 @@ body {
   padding: 16px;
 }
 
-
 .Modal {
   position: absolute;
   top: 50%;
@@ -175,8 +175,8 @@ body {
   border-radius: 4px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
   display: grid;
-  grid-template-columns: 1fr; /* Uma coluna */
-  grid-template-rows: auto repeat(3, auto) auto auto; /* Linhas automáticas para header, inputs, outputs e botões */
+  grid-template-columns: 1fr;
+  grid-template-rows: auto repeat(9, auto) auto;
   grid-template-areas: 
     "header"
     "input1"
@@ -196,7 +196,7 @@ body {
 
 .header-row {
   display: grid;
-  grid-template-columns: 1fr auto; /* Header ocupa a maior parte, ícone à direita */
+  grid-template-columns: 1fr auto;
   grid-template-areas: "header icon";
   align-items: center;
 }
@@ -211,12 +211,10 @@ body {
 }
 
 .input {
-  grid-area: input1; /* A cada input recebe uma área única */
   margin-left: 10px;
 }
 
 .output {
-  grid-area: output1; /* Saída correspondente ao input */
   border-bottom: 1px solid #1976D2;
   border-left: 1px solid #1976D2;
   text-align: center;
@@ -224,11 +222,10 @@ body {
 }
 
 .update-button {
-  grid-area: update;
   cursor: pointer;
 }
 
-.excel-button{
+.excel-button {
   cursor: pointer;
 }
 
@@ -241,9 +238,8 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.open-modal-button{
+.open-modal-button {
   cursor: pointer;
   border: none;
   background-color: #FFFFFF;
 }
-
