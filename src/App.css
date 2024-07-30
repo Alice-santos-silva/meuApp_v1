@@ -171,7 +171,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
+  padding: 50px;
   border-radius: 4px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
   display: grid;
@@ -243,3 +243,5 @@ button {
   border: none;
   background-color: #FFFFFF;
 }
+
+

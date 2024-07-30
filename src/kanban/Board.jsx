@@ -4,10 +4,8 @@ import '../App.css'; // Importando o arquivo CSS
 import CompModal from '../utils/compModal'; // Importando o modal
 
 const initialCards = [
-  { id: 1, text: 'Task 1', status: 'Novo Orçamento', fields: {} },
-  { id: 2, text: 'Task 2', status: 'Synoptique e Condições', fields: {} },
-  { id: 3, text: 'Task 3', status: 'Montagem do Roteiro', fields: {} },
-  { id: 4, text: 'Task 4', status: 'Done', fields: {} },
+  { id: 1, text: 'Task 1', status: 'Novo Orçamento', fields: {} }
+  
 ];
 
 const Board = () => {
@@ -32,8 +30,6 @@ const Board = () => {
       )
     );
   };
-
- 
 
   const handleAddCard = () => {
     const newCard = {

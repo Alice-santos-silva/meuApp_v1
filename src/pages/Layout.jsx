@@ -63,6 +63,9 @@ export default function Layout() {
                         <MenuItem onClick={handleClose} component={Link} to="/kanban">
                             Acompanhamento de Orçamentos
                         </MenuItem>
+                        <MenuItem onClick={handleClose} component={Link} to="/tarifario">
+                            Painel Tarifário
+                        </MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
