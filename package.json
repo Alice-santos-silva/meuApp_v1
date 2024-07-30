@@ -23,7 +23,8 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.24.0",
     "styled-components": "^6.1.12",
-    "xlsx": "^0.18.5"
+    "xlsx": "0.20.2"
+
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
